@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Homeboard 隐私政策</title>
+    <title>Homeboard Privacy Policy</title>
     <style>
       :root {
         --bg: #f4f6f8;
@@ -98,78 +98,83 @@
   <body>
     <main>
       <div class="badge">Last updated: 2026-04-13</div>
-      <h1>Homeboard 隐私政策</h1>
+      <h1>Homeboard Privacy Policy</h1>
       <p class="lede">
-        Homeboard 是一个 Chrome 新标签页扩展，提供书签管理、待办事项、快捷导航、Prompt Library、Pan
-        Search 和可选的本地 MCP Companion 能力。本政策说明 Homeboard 会处理哪些数据、这些数据如何使用，以及你可以如何控制这些数据。
+        Homeboard is a Chrome new tab extension that provides bookmark management, todos, quick links,
+        a Prompt Library, Pan Search, and optional local MCP Companion features. This policy explains
+        what data Homeboard handles, how that data is used, and what controls you have.
       </p>
 
-      <h2>1. 我们处理哪些数据</h2>
+      <h2>1. What Data We Handle</h2>
       <ul>
-        <li>书签数据：当你使用书签树、拖拽、重命名、新建、删除或同步功能时，扩展会读取和修改 Chrome 书签。</li>
-        <li>本地内容数据：待办事项、导航卡片、设置项、Prompt Library 内容、MCP 服务器配置等会保存在浏览器本地。</li>
-        <li>Pan Search 查询数据：当你主动使用 Pan Search 时，搜索关键词会发送到第三方服务 <code>www.quarkpanso.com</code> 以返回搜索结果。</li>
-        <li>设备本地安装状态：如果你主动使用本地 MCP Companion 安装引导，扩展会记录安装意图时间戳等少量本地状态。</li>
-        <li>可选本地桥接数据：只有在你主动授予 <code>nativeMessaging</code> 权限并安装本地 Companion 后，Prompt snapshot 和服务器元数据才会发送到你本机上的本地程序。</li>
+        <li>Bookmark data: when you use the bookmark tree, drag and drop, rename, create, delete, or sync features, the extension reads and updates Chrome bookmarks.</li>
+        <li>Local content data: todos, quick links, settings, Prompt Library items, and MCP server configurations are stored locally in the browser.</li>
+        <li>Pan Search query data: when you actively use Pan Search, the search keyword is sent to the third-party service <code>www.quarkpanso.com</code> to return results.</li>
+        <li>Local installation state: if you actively use the local MCP Companion installation flow, the extension stores a small amount of local state such as installation intent timestamps.</li>
+        <li>Optional local bridge data: only if you actively grant the <code>nativeMessaging</code> permission and install the local Companion, prompt snapshots and server metadata are sent to software running on your own machine.</li>
       </ul>
 
-      <h2>2. 数据如何存储</h2>
+      <h2>2. How Data Is Stored</h2>
       <ul>
-        <li>扩展优先使用 <code>chrome.storage.local</code> 存储设置、待办、导航、Prompt Library 和 MCP 服务器配置。</li>
-        <li>在不支持扩展 API 的本地预览场景下，页面可能退回到浏览器 <code>localStorage</code>。</li>
-        <li>Pan Search 会在本地保存一个随机生成的客户端指纹以及夸克签名模块地址缓存，用于请求签名与接口兼容。</li>
-        <li>Homeboard 还会在书签中创建一个内部缓存目录 <code>.__HOMEBOARD_SYNC_CACHE__ DO NOT DELETE (bookmark cache)</code>，用于保存待办和导航数据的书签化副本。</li>
+        <li>The extension primarily uses <code>chrome.storage.local</code> to store settings, todos, quick links, Prompt Library content, and MCP server configuration.</li>
+        <li>In local preview mode where extension APIs are unavailable, the page may fall back to browser <code>localStorage</code>.</li>
+        <li>Pan Search stores a locally generated random client fingerprint and a cached Quark signer module URL to support request signing and compatibility.</li>
+        <li>Homeboard also creates an internal bookmark cache folder named <code>.__HOMEBOARD_SYNC_CACHE__ DO NOT DELETE (bookmark cache)</code> to keep bookmark-backed copies of todo and quick link data.</li>
       </ul>
 
-      <h2>3. 数据会发送到哪里</h2>
+      <h2>3. Where Data May Be Sent</h2>
       <ul>
-        <li>Homeboard 不提供开发者自建云端服务，也不会把你的数据上传到开发者控制的服务器。</li>
-        <li>当你使用 Pan Search 时，查询词和请求所需字段会发送到 <code>www.quarkpanso.com</code>。</li>
-        <li>当你在 Homeboard 中打开 DeepSeek 或 OpenAI 面板时，对应页面会从 <code>chat.deepseek.com</code>、<code>chatgpt.com</code>、<code>chat.openai.com</code> 或 <code>auth.openai.com</code> 加载。这些页面中的登录状态、对话内容和后续数据处理受相应第三方服务的隐私政策约束。</li>
-        <li>界面字体资源可能会从 Google Fonts 相关域名加载，因此浏览器会向这些域名发起标准的资源请求。</li>
-        <li>如果你开启了 Chrome 自身的书签同步，Homeboard 写入到书签中的内部缓存内容也可能被 Chrome 同步到你的浏览器账户。这属于 Chrome 浏览器自身的同步行为。</li>
-        <li>如果你主动安装并启用本地 MCP Companion，扩展会把 Prompt snapshot 和服务器元数据发送给你本机上的原生程序，不会直接发送到开发者服务器。</li>
+        <li>Homeboard does not operate a developer-hosted cloud backend and does not upload your data to developer-controlled servers.</li>
+        <li>When you use Pan Search, the query and required request fields are sent to <code>www.quarkpanso.com</code>.</li>
+        <li>When you open DeepSeek or OpenAI panels inside Homeboard, those pages load from <code>chat.deepseek.com</code>, <code>chatgpt.com</code>, <code>chat.openai.com</code>, or <code>auth.openai.com</code>. Login state, conversations, and further processing on those pages are governed by the privacy policies of those third-party services.</li>
+        <li>UI font resources may load from Google Fonts related domains, so the browser may make standard resource requests to those domains.</li>
+        <li>If you have Chrome bookmark sync enabled, internal bookmark cache entries created by Homeboard may also be synchronized by Chrome as part of Chrome's own sync behavior.</li>
+        <li>If you actively install and enable the local MCP Companion, the extension sends prompt snapshots and server metadata to software running locally on your device, not to a developer server.</li>
       </ul>
 
-      <h2>4. 数据用途</h2>
+      <h2>4. Why the Data Is Used</h2>
       <ul>
-        <li>展示、编辑和整理你的书签。</li>
-        <li>保存你的待办事项、快捷导航、提示词和扩展设置。</li>
-        <li>在书签和本地状态之间保持 Homeboard 数据一致。</li>
-        <li>执行你主动发起的 Pan Search 查询。</li>
-        <li>在你主动启用时，为本地 MCP Companion 提供配置和 Prompt 快照。</li>
+        <li>To display, edit, and organize your bookmarks.</li>
+        <li>To save your todos, quick links, prompts, and extension settings.</li>
+        <li>To keep Homeboard data consistent between bookmarks and local state.</li>
+        <li>To perform Pan Search queries that you explicitly initiate.</li>
+        <li>To provide configuration and prompt snapshots to the local MCP Companion when you explicitly enable it.</li>
       </ul>
 
-      <h2>5. 我们不会做什么</h2>
+      <h2>5. What We Do Not Do</h2>
       <ul>
-        <li>不会出售你的个人数据。</li>
-        <li>不会将你的数据用于广告定向。</li>
-        <li>不会在未经你操作触发的情况下，把书签、待办、导航或 Prompt 内容上传到开发者自建服务器。</li>
-        <li>不会收集独立的分析埋点、广告标识符或第三方数据经纪信息。</li>
+        <li>We do not sell your personal data.</li>
+        <li>We do not use your data for ad targeting.</li>
+        <li>We do not upload your bookmarks, todos, quick links, or prompt content to a developer-hosted server without a user-initiated action that requires third-party communication.</li>
+        <li>We do not collect separate analytics trackers, advertising identifiers, or data broker information.</li>
       </ul>
 
-      <h2>6. 你的选择与控制</h2>
+      <h2>6. Your Choices and Controls</h2>
       <ul>
-        <li>你可以在扩展内修改或删除待办、导航卡片、Prompt Library 项和书签操作结果。</li>
-        <li>你可以在 Chrome 中删除 Homeboard 创建的书签缓存目录以及相关书签。</li>
-        <li>你可以在 Chrome 扩展管理页移除扩展，浏览器会同时删除扩展本地存储。</li>
-        <li>你可以不授予 <code>nativeMessaging</code> 可选权限，也可以随时移除该权限。</li>
-        <li>如果你安装了本地 MCP Companion，你也可以单独卸载该本地程序。</li>
+        <li>You can edit or delete todos, quick links, Prompt Library items, and bookmark changes created through the extension.</li>
+        <li>You can delete the Homeboard bookmark cache folder and related entries in Chrome.</li>
+        <li>You can remove the extension in Chrome, which also removes extension local storage.</li>
+        <li>You can choose not to grant the optional <code>nativeMessaging</code> permission, or revoke it later.</li>
+        <li>If you installed the local MCP Companion, you can uninstall that local program separately.</li>
       </ul>
 
-      <h2>7. 第三方服务</h2>
+      <h2>7. Third-Party Services</h2>
       <p>
-        Homeboard 可能与以下第三方站点或服务发生交互：Quark Pan Search、OpenAI、DeepSeek、Google Fonts，以及你显式打开的导航站点。这些第三方服务有其各自的条款和隐私政策，超出 Homeboard 的控制范围。
+        Homeboard may interact with third-party services such as Quark Pan Search, OpenAI, DeepSeek,
+        Google Fonts, and any sites you explicitly open through quick links. Those services have their
+        own terms and privacy policies and are outside Homeboard's control.
       </p>
 
-      <h2>8. 政策更新</h2>
+      <h2>8. Policy Updates</h2>
       <p>
-        如果 Homeboard 的数据处理方式发生变化，本页面会更新并标注新的生效日期。继续使用新版本前，请重新阅读本政策。
+        If Homeboard's data handling changes, this page will be updated and the effective date will be
+        revised. Please review this policy when using a new release.
       </p>
 
-      <h2>9. 联系方式</h2>
+      <h2>9. Contact</h2>
       <p>
-        如需联系开发者，请使用 Chrome 应用商店条目中展示的开发者联系信息，或发布页面中公开提供的联系渠道。
+        To contact the developer, use the contact details shown on the Chrome Web Store listing or any
+        public contact channel provided on the published project page.
       </p>
 
       <p class="footnote">
