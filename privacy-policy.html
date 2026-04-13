@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Homeboard 隐私政策</title>
+    <style>
+      :root {
+        --bg: #f4f6f8;
+        --panel: #ffffff;
+        --text: #16202a;
+        --muted: #5d6b78;
+        --border: #d9e1e8;
+        --accent: #0f6cbd;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: linear-gradient(180deg, #eef3f7 0%, #f8fafc 100%);
+        color: var(--text);
+        font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(880px, calc(100% - 32px));
+        margin: 32px auto;
+        padding: 32px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        box-shadow: 0 20px 48px rgba(15, 23, 42, 0.08);
+      }
+
+      h1,
+      h2 {
+        line-height: 1.25;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: 32px;
+      }
+
+      h2 {
+        margin: 32px 0 12px;
+        font-size: 20px;
+      }
+
+      p,
+      li {
+        margin: 0 0 12px;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .lede {
+        color: var(--muted);
+      }
+
+      .badge {
+        display: inline-block;
+        margin-bottom: 16px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(15, 108, 189, 0.1);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #eef4fb;
+        font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+        font-size: 0.95em;
+      }
+
+      .footnote {
+        margin-top: 32px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="badge">Last updated: 2026-04-13</div>
+      <h1>Homeboard 隐私政策</h1>
+      <p class="lede">
+        Homeboard 是一个 Chrome 新标签页扩展，提供书签管理、待办事项、快捷导航、Prompt Library、Pan
+        Search 和可选的本地 MCP Companion 能力。本政策说明 Homeboard 会处理哪些数据、这些数据如何使用，以及你可以如何控制这些数据。
+      </p>
+
+      <h2>1. 我们处理哪些数据</h2>
+      <ul>
+        <li>书签数据：当你使用书签树、拖拽、重命名、新建、删除或同步功能时，扩展会读取和修改 Chrome 书签。</li>
+        <li>本地内容数据：待办事项、导航卡片、设置项、Prompt Library 内容、MCP 服务器配置等会保存在浏览器本地。</li>
+        <li>Pan Search 查询数据：当你主动使用 Pan Search 时，搜索关键词会发送到第三方服务 <code>www.quarkpanso.com</code> 以返回搜索结果。</li>
+        <li>设备本地安装状态：如果你主动使用本地 MCP Companion 安装引导，扩展会记录安装意图时间戳等少量本地状态。</li>
+        <li>可选本地桥接数据：只有在你主动授予 <code>nativeMessaging</code> 权限并安装本地 Companion 后，Prompt snapshot 和服务器元数据才会发送到你本机上的本地程序。</li>
+      </ul>
+
+      <h2>2. 数据如何存储</h2>
+      <ul>
+        <li>扩展优先使用 <code>chrome.storage.local</code> 存储设置、待办、导航、Prompt Library 和 MCP 服务器配置。</li>
+        <li>在不支持扩展 API 的本地预览场景下，页面可能退回到浏览器 <code>localStorage</code>。</li>
+        <li>Pan Search 会在本地保存一个随机生成的客户端指纹以及夸克签名模块地址缓存，用于请求签名与接口兼容。</li>
+        <li>Homeboard 还会在书签中创建一个内部缓存目录 <code>.__HOMEBOARD_SYNC_CACHE__ DO NOT DELETE (bookmark cache)</code>，用于保存待办和导航数据的书签化副本。</li>
+      </ul>
+
+      <h2>3. 数据会发送到哪里</h2>
+      <ul>
+        <li>Homeboard 不提供开发者自建云端服务，也不会把你的数据上传到开发者控制的服务器。</li>
+        <li>当你使用 Pan Search 时，查询词和请求所需字段会发送到 <code>www.quarkpanso.com</code>。</li>
+        <li>当你在 Homeboard 中打开 DeepSeek 或 OpenAI 面板时，对应页面会从 <code>chat.deepseek.com</code>、<code>chatgpt.com</code>、<code>chat.openai.com</code> 或 <code>auth.openai.com</code> 加载。这些页面中的登录状态、对话内容和后续数据处理受相应第三方服务的隐私政策约束。</li>
+        <li>界面字体资源可能会从 Google Fonts 相关域名加载，因此浏览器会向这些域名发起标准的资源请求。</li>
+        <li>如果你开启了 Chrome 自身的书签同步，Homeboard 写入到书签中的内部缓存内容也可能被 Chrome 同步到你的浏览器账户。这属于 Chrome 浏览器自身的同步行为。</li>
+        <li>如果你主动安装并启用本地 MCP Companion，扩展会把 Prompt snapshot 和服务器元数据发送给你本机上的原生程序，不会直接发送到开发者服务器。</li>
+      </ul>
+
+      <h2>4. 数据用途</h2>
+      <ul>
+        <li>展示、编辑和整理你的书签。</li>
+        <li>保存你的待办事项、快捷导航、提示词和扩展设置。</li>
+        <li>在书签和本地状态之间保持 Homeboard 数据一致。</li>
+        <li>执行你主动发起的 Pan Search 查询。</li>
+        <li>在你主动启用时，为本地 MCP Companion 提供配置和 Prompt 快照。</li>
+      </ul>
+
+      <h2>5. 我们不会做什么</h2>
+      <ul>
+        <li>不会出售你的个人数据。</li>
+        <li>不会将你的数据用于广告定向。</li>
+        <li>不会在未经你操作触发的情况下，把书签、待办、导航或 Prompt 内容上传到开发者自建服务器。</li>
+        <li>不会收集独立的分析埋点、广告标识符或第三方数据经纪信息。</li>
+      </ul>
+
+      <h2>6. 你的选择与控制</h2>
+      <ul>
+        <li>你可以在扩展内修改或删除待办、导航卡片、Prompt Library 项和书签操作结果。</li>
+        <li>你可以在 Chrome 中删除 Homeboard 创建的书签缓存目录以及相关书签。</li>
+        <li>你可以在 Chrome 扩展管理页移除扩展，浏览器会同时删除扩展本地存储。</li>
+        <li>你可以不授予 <code>nativeMessaging</code> 可选权限，也可以随时移除该权限。</li>
+        <li>如果你安装了本地 MCP Companion，你也可以单独卸载该本地程序。</li>
+      </ul>
+
+      <h2>7. 第三方服务</h2>
+      <p>
+        Homeboard 可能与以下第三方站点或服务发生交互：Quark Pan Search、OpenAI、DeepSeek、Google Fonts，以及你显式打开的导航站点。这些第三方服务有其各自的条款和隐私政策，超出 Homeboard 的控制范围。
+      </p>
+
+      <h2>8. 政策更新</h2>
+      <p>
+        如果 Homeboard 的数据处理方式发生变化，本页面会更新并标注新的生效日期。继续使用新版本前，请重新阅读本政策。
+      </p>
+
+      <h2>9. 联系方式</h2>
+      <p>
+        如需联系开发者，请使用 Chrome 应用商店条目中展示的开发者联系信息，或发布页面中公开提供的联系渠道。
+      </p>
+
+      <p class="footnote">
+        For Chrome Web Store review: this document is intended to be published at a publicly accessible HTTPS URL and linked from the store listing Privacy tab.
+      </p>
+    </main>
+  </body>
+</html>
